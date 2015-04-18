@@ -25,7 +25,7 @@ app.get('/', function (req, res) {
           request: 'stops_area',
           user: 'ollisa-pebble',
           pass: 'NcR5rZJR',
-          center_coordinate: lat + ',' + lon,
+          center_coordinate: lon + ',' + lat,
           diameter: req.query.diameter || 500,
           epsg_in: 'wgs84',
           epsg_out: 'wgs84'
@@ -86,6 +86,8 @@ app.get('/', function (req, res) {
                   };
                 })
                 .get();
+
+              console.log('Got', buses.length, 'buses for stop', stop.name);
 
               cb(null, {
                 id: stop.code,
